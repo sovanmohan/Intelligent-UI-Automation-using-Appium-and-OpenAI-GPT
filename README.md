@@ -98,9 +98,6 @@ You are a UI automation assistant. Based on the user's task and the current scre
 ## 📈 Roadmap
 - [x] Multi-step command execution
 - [x] GPT-4o-mini integration with real-time XML
-- [ ] Toggle state detection (e.g. switch ON/OFF)
-- [ ] Screenshot + log report after every task
-- [ ] Voice assistant integration
 
 ---
 
@@ -111,7 +108,7 @@ Include screenshots or link to demo video here.
 
 ## 🙋‍♂️ Author
 **Sovan Mohanty**  
-Reach out via [LinkedIn](https://linkedin.com/in/yourprofile) or [Email](mailto:your@email.com)
+Reach out via [LinkedIn](https://www.linkedin.com/in/sovan-mohanty-a32b64237/) or [Email](mailto:msovan928@gmail.com)
 
 ---
 

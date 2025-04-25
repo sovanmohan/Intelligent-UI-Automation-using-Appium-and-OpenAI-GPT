@@ -102,9 +102,13 @@ You are a UI automation assistant. Based on the user's task and the current scre
 ---
 
 ## 📸 Demo Preview
-Include screenshots or link to demo video here.
+
 
 ---
+
+https://github.com/user-attachments/assets/f23efbfe-a841-4f6c-86bb-9f172b931c0c
+
+
 
 ## 🙋‍♂️ Author
 **Sovan Mohanty**  

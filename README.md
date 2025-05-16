@@ -134,8 +134,8 @@ The primary goal of this project is to provide seamless automation of mobile and
 ## Maintainer
 
 Sovan Mohanty  
-Email: [your@email.com]  
-LinkedIn: [linkedin.com/in/yourprofile]
+Email: [msovan928@email.com]  
+LinkedIn: [https://www.linkedin.com/in/sovan-mohanty-a32b64237/]
 
 ---
 

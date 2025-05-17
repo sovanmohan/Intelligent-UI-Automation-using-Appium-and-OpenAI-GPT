@@ -160,13 +160,3 @@ The primary goal of this project is to provide seamless automation of mobile and
 - [ ] Cross-platform support using `Root` driver for all open apps
 
 ---
-
-## Maintainer
-
-Sovan Mohanty  
-Email: [your@email.com]  
-LinkedIn: [linkedin.com/in/yourprofile]
-
----
-
-This document is updated to reflect the latest changes and development logs. Feel free to contribute or raise issues if using the open-source version on GitHub.

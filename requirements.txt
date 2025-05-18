@@ -1,12 +1,7 @@
+For Android:
 appium-python-client==2.11.1
-openai==1.14.3
-python-dotenv==1.0.1
-xmltodict==0.13.0
-
-# Optional, if using Jupyter Notebook for interface
-notebook==7.1.2
-ipykernel==6.29.4
-
-# Used internally for regex and system utils
-tqdm==4.66.2
-requests==2.31.0
+openai==1.14.2
+For Windows:
+appium-python-client==0.24
+selenium==3.5.1
+pyautogui==0.9.53

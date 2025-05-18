@@ -22,141 +22,151 @@ The primary goal of this project is to provide seamless automation of mobile and
 
 ## Setup Instructions
 
-### Environment Setup
+### Android Studio & Mobile Automation Setup
 
-1. **Install Python 3.x**
-   - Download and install from the [official website](https://www.python.org/downloads/).
+1. **Install Java JDK & Android Studio**
+   - Download and install the latest Java Development Kit (JDK) from Oracle or AdoptOpenJDK.
+   - Download and install Android Studio from the [official website](https://developer.android.com/studio).
 
-2. **Create a Virtual Environment (optional but recommended)**
+2. **Create a New Empty Project**
+   - Open Android Studio → “Start a new Android Studio project”.
+   - Choose “Empty Activity” template and finish project creation.
+
+3. **Configure Java SDK in Android Studio**
+   - File → Project Structure → SDK Location → Ensure JDK location is set.
+
+4. **Set Up Android Virtual Device (AVD)**
+   - Tools → AVD Manager → Create Virtual Device.
+   - Select a “Tablet” profile (e.g., Pixel C).
+   - Choose System Image: Android API Level 33 (Android 13) or Android 16 as required.
+   - Finish and launch the emulator.
+
+5. **Install Appium Python Client & UiAutomator2 Driver**
    ```bash
-   python -m venv automation-env
-   source automation-env/bin/activate  # On Windows: automation-env\Scripts\activate
+   pip install Appium-Python-Client openai selenium
    ```
+   - Use Appium Desktop to start the Appium server.
+   - In Appium Settings, install the UiAutomator2 server on the emulator.
 
-3. **Install Required Libraries**
-   Create a `requirements.txt` file with the following:
-   ```txt
-   appium-python-client==2.11.1
-   openai==1.14.2
-   selenium==4.23.1
-   pyautogui==0.9.53
-   ```
-   Then install with:
+6. **Appium Inspector**
+   - Launch Appium Inspector.
+   - Connect to the running Appium server.
+   - Provide desired capabilities (see below) to inspect UI elements.
+
+#### Android Desired Capabilities Example
+```json
+{
+  "platformName": "Android",
+  "deviceName": "emulator-5554",
+  "automationName": "UiAutomator2",
+  "appPackage": "com.android.settings",
+  "appActivity": ".Settings"
+}
+```
+
+---
+
+### Windows Desktop Automation Setup
+
+1. **Install WinAppDriver**
+   - Download WinAppDriver from the [official GitHub releases](https://github.com/microsoft/WinAppDriver/releases).
+   - Enable Developer Mode on Windows: Settings → Update & Security → For developers → Enable “Developer mode”.
+
+2. **Start WinAppDriver Server**
    ```bash
-   pip install -r requirements.txt
+   "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"
    ```
 
-4. **Install Android Studio**
-   - Configure and launch an emulator (e.g., Pixel, Baklava tablet)
+3. **Install Python Libraries**
+   ```bash
+   pip install Appium-Python-Client openai selenium pyautogui
+   ```
 
-5. **Install Appium Desktop & Start Appium Server**
-   - [Appium Desktop](https://github.com/appium/appium-desktop/releases)
-   - Run the server using default settings
+4. **Start Root Session for Multi-App Control**
+   - Use the “Root” app capability to attach to any open window.
 
-6. **Install WinAppDriver for Windows Automation**
-   - Download from the [official GitHub](https://github.com/microsoft/WinAppDriver)
-   - Enable Developer Mode on Windows
-   - Launch `WinAppDriver.exe` before running desktop automation scripts
+#### Windows Desired Capabilities Example
+```json
+{
+  "platformName": "Windows",
+  "deviceName": "WindowsPC",
+  "app": "Root"
+}
+```
 
 ---
 
 ## Development Timeline & Milestones
 
-### Phase 1: Android Mobile Automation (Using Appium & GPT-4o-mini)
+### Phase 1: Android Mobile Automation
 
-- **Basic Functionalities**:
-  - Connected OpenAI with prompt-response logic
-  - Integrated Appium with Android emulator
-  - Extracted real-time XML page source for prompt context
-  - Used GPT-4o-mini to respond with UI navigation instructions
+- **Initial Integration**:
+  - Connected OpenAI GPT-4o-mini with Appium.
+  - Extracted dynamic XML page source.
+- **UI Operations**:
+  - Implemented tap, scroll, and fallback mechanisms.
+  - Handled multi-step navigation (e.g., Settings > Display > Brightness).
+- **Testing & Validation**:
+  - Created test cases: “Go to Wi-Fi”, “Check Battery”, “Enable Bluetooth”.
 
-- **Enhancements**:
-  - Introduced automatic element tapping using XPath
-  - Implemented scroll-and-tap fallback logic
-  - Handled multi-step UI navigation (e.g., navigating to Settings > Battery)
-  - Created a detailed README and visual documentation
-  - Generated presentation and project summary for clients
+### Phase 2: Windows Desktop Automation
 
-### Phase 2: Windows Desktop Automation (Using WinAppDriver & GPT-4o-mini)
-
-- **Implementation**:
-  - Created dynamic prompt handler to automate Notepad using natural language
-  - Used GPT-4o-mini to return click/type/close instructions
-  - Added element recognition by class name, name, and fallback methods
-
-- **Challenges Addressed**:
-  - Resolved driver session error by providing valid WinAppDriver-compatible capabilities
-  - Used `pyautogui` as a fallback for typing into edit fields that failed with `send_keys`
-  - Integrated logic to switch driver sessions for multiple app launches at runtime
-
----
-
-## Current Roadblock
-
-**Typing into desktop apps (e.g., Notepad) using Appium send_keys fails with an element not found error.**
-
-- Attempted Solution:
-  - Used standard Appium `send_keys()` — failed due to element detection issue
-  - Switched to `pyautogui.write()` — successfully simulated typing in Notepad
-
-- Next Steps:
-  - Standardize input method fallback
-  - Implement virtual key support using Appium's "keys" capability for advanced input
-  - Refactor typing and click logic into a more modular class-based architecture
+- **Launch & Attach**:
+  - Implemented Start-menu launch logic via `pyautogui`.
+  - Attached to new window handles automatically.
+- **In-App Navigation**:
+  - Used GPT-4o-mini to generate click/type steps.
+  - Fallback to PyAutoGUI typing when necessary.
+- **Examples**:
+  - “Open Notepad and type ‘Hello World’”.
+  - “Enable Bluetooth” via Settings search.
 
 ---
 
 ## Architecture Overview
 
-### Functional Workflow
-
-1. **User Input**: Entered as a natural language prompt
-2. **OpenAI GPT-4o-mini**: Processes prompt and page context
-3. **Instruction Response**: Returns action plan (e.g., Tap on 'Wi-Fi')
-4. **Appium Driver**:
-   - Android → Executes gesture or navigation
-   - Windows → Launches and interacts with desktop applications
+1. **User Input**: Natural language command.
+2. **Context Fetch**: Retrieve current UI elements via XML.
+3. **GPT-4o-mini Processing**: Generate action plan.
+4. **Execution Engine**:
+   - Android: Appium UiAutomator2.
+   - Windows: WinAppDriver + PyAutoGUI.
 5. **Fallbacks**:
-   - Scroll-to-view for off-screen elements
-   - PyAutoGUI for keyboard input failures
+   - Scroll-to-view.
+   - PyAutoGUI for missing element interactions.
 
 ---
 
 ## Example Prompts
 
-- Android:
-  - "Go to Battery Settings"
-  - "Turn on Bluetooth"
-  - "Scroll down and open About Phone"
-
-- Windows:
-  - "Type 'Hello World' in Notepad"
-  - "Click on View menu"
-  - "Close Notepad"
+- **Android**:
+  - “Open Battery settings”
+  - “Turn on Bluetooth”
+- **Windows**:
+  - “Enable Bluetooth”
+  - “Type ‘Test’ in Notepad”
+  - “Close Calculator”
 
 ---
 
 ## File Structure
 
 ```
-├── android_controller.py        # Android automation logic
-├── windows_controller.py        # Windows automation logic
+├── android_controller.py
+├── windows_controller.py
 ├── utils/
-│   ├── element_parser.py        # XML extraction and parsing
-│   ├── fallback_typing.py       # PyAutoGUI-based typing
-├── assets/                      # Diagrams, flowcharts
-├── Appium_OpenAI.ipynb          # Jupyter notebook interface
-├── README.md                    # GitHub project overview
-├── requirements.txt             # Python dependencies
+│   ├── xml_parser.py
+│   └── fallback.py
+├── Appium_OpenAI.ipynb
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
 ## Future Enhancements
 
-- [ ] Detect toggle switch state (e.g., Wi-Fi ON/OFF)
-- [ ] Screenshot and logging after every step
-- [ ] Voice command integration for both mobile and desktop
-- [ ] Cross-platform support using `Root` driver for all open apps
-
----
+- Toggle state detection (ON/OFF).
+- Screenshot capture & logging.
+- Voice command support.
+- Cross-platform “Root” driver enhancements.

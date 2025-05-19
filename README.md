@@ -43,7 +43,9 @@ The primary goal of this project is to provide seamless automation of mobile and
 
 5. **Install Appium Python Client & UiAutomator2 Driver**
    ```bash
-   pip install Appium-Python-Client openai selenium
+   appium driver install uiautomator2
+   pip install Appium-Python-Client
+   
    ```
    - Use Appium Desktop to start the Appium server.
    - In Appium Settings, install the UiAutomator2 server on the emulator.

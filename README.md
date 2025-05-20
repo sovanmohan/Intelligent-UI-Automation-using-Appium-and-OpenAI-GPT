@@ -1,4 +1,4 @@
-# Intelligent UI Automation with Appium & OpenAI GPT-4o-mini
+# Intelligent UI Automation with Appium & OpenAI GPT Model
 
 This document captures the end-to-end progress, architecture, and implementation details of a project designed to enable natural language-driven UI automation for both Android and Windows desktop platforms using OpenAI's GPT-4o-mini model and Appium automation frameworks.
 
@@ -12,7 +12,7 @@ The primary goal of this project is to provide seamless automation of mobile and
 
 ## Technology Stack
 
-- **OpenAI GPT-4o-mini**: For parsing and interpreting natural language instructions.
+- **OpenAI GPT**: For parsing and interpreting natural language instructions.
 - **Appium (UiAutomator2, WinAppDriver)**: For Android and Windows UI automation.
 - **Python 3.x**: Core programming language for automation logic.
 - **Jupyter Notebook**: Interface used during development and testing.
@@ -103,7 +103,7 @@ The primary goal of this project is to provide seamless automation of mobile and
 ### Phase 1: Android Mobile Automation
 
 - **Initial Integration**:
-  - Connected OpenAI GPT-4o-mini with Appium.
+  - Connected OpenAI GPT with Appium.
   - Extracted dynamic XML page source.
 - **UI Operations**:
   - Implemented tap, scroll, and fallback mechanisms.

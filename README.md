@@ -1,12 +1,12 @@
 # Intelligent UI Automation with Appium & OpenAI GPT Model
 
-This document captures the end-to-end progress, architecture, and implementation details of a project designed to enable natural language-driven UI automation for both Android and Windows desktop platforms using OpenAI's GPT-4o-mini model and Appium automation frameworks.
+This document captures the end-to-end progress, architecture, and implementation details of a project designed to enable natural language-driven UI automation for both Android and Windows desktop platforms using OpenAI's GPT model and Appium automation frameworks.
 
 ---
 
 ## Project Overview
 
-The primary goal of this project is to provide seamless automation of mobile and desktop applications through natural language commands. The system uses OpenAI GPT-4o-mini to interpret user instructions and Appium to perform real-time UI operations based on the current screen structure (XML page source).
+The primary goal of this project is to provide seamless automation of mobile and desktop applications through natural language commands. The system uses OpenAI GPT to interpret user instructions and Appium to perform real-time UI operations based on the current screen structure (XML page source).
 
 ---
 
@@ -117,7 +117,7 @@ The primary goal of this project is to provide seamless automation of mobile and
   - Implemented Start-menu launch logic via `pyautogui`.
   - Attached to new window handles automatically.
 - **In-App Navigation**:
-  - Used GPT-4o-mini to generate click/type steps.
+  - Used GPT to generate click/type steps.
   - Fallback to PyAutoGUI typing when necessary.
 - **Examples**:
   - “Open Notepad and type ‘Hello World’”.

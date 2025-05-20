@@ -127,15 +127,7 @@ The primary goal of this project is to provide seamless automation of mobile and
 
 ## Architecture Overview
 
-1. **User Input**: Natural language command.
-2. **Context Fetch**: Retrieve current UI elements via XML.
-3. **GPT-4o-mini Processing**: Generate action plan.
-4. **Execution Engine**:
-   - Android: Appium UiAutomator2.
-   - Windows: WinAppDriver + PyAutoGUI.
-5. **Fallbacks**:
-   - Scroll-to-view.
-   - PyAutoGUI for missing element interactions.
+![Appium_UI_Auto_windows drawio](https://github.com/user-attachments/assets/be09035b-220b-4943-ad92-f70beb741108)
 
 ---
 

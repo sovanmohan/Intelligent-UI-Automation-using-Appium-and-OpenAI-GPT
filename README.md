@@ -127,7 +127,7 @@ The primary goal of this project is to provide seamless automation of mobile and
 
 ## Architecture Overview
 
-![Appium_UI_Auto_windows drawio](https://github.com/user-attachments/assets/be09035b-220b-4943-ad92-f70beb741108)
+![Appium_UI_Auto_windows drawio](https://github.com/user-attachments/assets/013cfdeb-c892-4f13-97fc-b3afe0f79126)
 
 ---
 

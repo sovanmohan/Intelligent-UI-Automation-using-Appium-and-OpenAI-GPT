@@ -1,0 +1,2 @@
+OPENAI_KEY = ""  # Add your key
+GEMINI_KEY = "AIzaSyBJNIF6JBP8xqfSn8XNBQ2EuuYsW9c6XBI"
